@@ -1,9 +1,16 @@
+import About from "../../Components/About/About";
+import Bannar from "../../Components/Bannar/Bannar";
+
+import Services from "../Services/Services";
 
 
 const Home = () => {
     return (
-        <div>
-            <h1 className="text-5xl text-center">Home</h1>
+        <div className="max-w-7xl mx-auto">
+            <Bannar></Bannar>
+            <About></About>
+            <Services></Services>
+            
         </div>
     );
 };

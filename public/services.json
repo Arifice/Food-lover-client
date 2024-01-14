@@ -1,0 +1,113 @@
+[
+    {
+        
+        "service_id": "1",
+        "title": "American Pancake",
+        "img": "https://i.postimg.cc/8z3sHhPr/American-pancakes-LGH-21fbfc2e-6462-4078-92ed-e830f88784be-0-1400x919.jpg",
+        "price": "320",
+        "description": "Classic American pancakes are stacked tall, fluffy and best served with a drizzle of maple syrup.It is most popular in the South Indian states of Tamil Nadu, Kerala, Karnataka, Telangana and Andhra Pradesh; and also in West Indian states of Rajasthan, Gujarat and Maharashtra."
+        
+    },
+    {
+        
+        "service_id": "2",
+        "title": "Scones",
+        "img": "https://i.postimg.cc/4xB3WypV/popular-english-foods.jpg",
+        "price": "220",
+        "description": "English Sconess are a thin  comparable to the French crêpe. They are traditionally rolled up and eaten with sugar and lemon.It is most popular in the South Indian states of Tamil Nadu, Kerala, Karnataka, Telangana and Andhra Pradesh; and also in West Indian states of Rajasthan, Gujarat and Maharashtra."
+        
+    },
+    {
+      
+        "service_id": "3",
+        "title": "Curd rice",
+        "img": "https://i.postimg.cc/mDRtKTxY/480px-Curd-Rice.jpg",
+        "price": "200",
+        "description": "Curd rice, also called yogurt rice, is a dish originating from India. The word in Indian English refers to unsweetened probiotic yogurt. It is most popular in the South Indian states of Tamil Nadu, Kerala, Karnataka, Telangana and Andhra Pradesh; and also in West Indian states of Rajasthan, Gujarat and Maharashtra."
+        
+    },
+    {
+        
+        "service_id": "4",
+        "title": "Sunday roast",
+        "img": "https://i.postimg.cc/9F8hdJgc/Sunday-roast-roast-beef-1.jpg",
+        "price": "150.00",
+        "description": "A Sunday roast or roast dinner is a traditional meal of British origin. Although it can be consumed throughout the week, it is traditionally consumed on Sunday. It consists of roasted meat, roasted potatoes and accompaniments such as Yorkshire pudding, stuffing, gravy, and condiments such "
+        
+    },
+    {
+        
+        "service_id": "5",
+        "title": "Lancashire hotpot",
+        "img": "https://i.postimg.cc/bvxZm727/pexels-senuscape-2313686.jpg",
+        "price": "300",
+        "description": "Lancashire hotpot is a stew originating in Lancashire in the North West of England. It consists of lamb or mutton and onion, topped with sliced potatoes and slowly baked in a pot at a low heat."
+        
+    },
+    {
+       
+        "service_id": "6",
+        "title": "Faggots",
+        "img": "https://i.postimg.cc/6pYWTBn5/480px-Faggots-and-gravy.jpg",
+        "price": "220",
+        "description": "Faggots are meatballs made from minced off-cuts and offal mixed with herbs and sometimes bread crumbs. It is a traditional dish in the United Kingdom, especially South and Mid Wales and the English Midland"
+       
+    },
+
+
+
+    {
+       
+        "service_id": "7",
+        "title": "Croquetas",
+        "img": "https://i.postimg.cc/yYMTmBQC/spanish-croquetas.jpg",
+        "price": "220",
+        "description": "Croquetas are made with the main ingredient of choice which could vary from ham, fish, cheese, vegetables, ground meat, potatoes, and more.The Spanish version of croquettes is croquetas. And this common spanish tapas dish is made with several different fillings."
+       
+    },
+    {
+       
+        "service_id": "8",
+        "title": "Paella",
+        "img": "https://i.postimg.cc/jd710MBK/paella-de-mariscos-768x499.jpg",
+        "price": "250",
+        "description": "Paella is one of the most famous Spanish dishes.It is the one traditional Spanish food that practically everyone is familiar with.In fact, many consider it Spain’s national dish.Paella is a flavorsome Spanish rice dish served with vegetables and meats."
+       
+    },
+    {
+       
+        "service_id": "9",
+        "title": "Jamón Ibérico",
+        "img": "https://i.postimg.cc/0NSthnQF/Jamon-Iberico-001.jpg",
+        "price": "330",
+        "description": "Cured Iberian ham or, Jamón Ibérico, is one of Spain’s most universal snacks.The cured ham is sliced into incredibly thin slices. And it’s the perfect snack to nibble on alone or coupled with fine cheese at any local spanish tapas bar."
+       
+    },
+    {
+       
+        "service_id": "10",
+        "title": "Crema Catalana",
+        "img": "https://i.postimg.cc/7P9zPzJR/images-33.jpg",
+        "price": "220",
+        "description": "If crème brulee is one of your favorites, then it’s time to let Crema Catalana have the spotlight.This Spanish dessert is a rich custard that’s topped with caramelized sugar. And it’s oftentimes given a final touch with sprinkled on citrus zest and cinnamon."
+       
+    },
+    {
+       
+        "service_id": "11",
+        "title": "pan tumaca",
+        "img": "https://i.postimg.cc/6pjz8S7D/pan-tumaca.jpg",
+        "price": "220",
+        "description": "For cold winter days, a bowl of pan tumaca is a great way to warm up. Fabada Asturiana is a Spanish bean stew. And it’s filled with white beans and meat. Blood sausage, chorizo, or pork is the usual meat of choice."
+       
+    },
+    {
+       
+        "service_id": "12",
+        "title": "Patatas Bravas",
+        "img": "https://i.postimg.cc/Y9QJNbkt/patatas-bravas-768x512.jpg",
+        "price": "310",
+        "description": "If you have a love for spicy foods or dipping sauces, then patatas bravas or “brave potatoes” is soon to be your new favorite dish! If you’re not a fan of overly spicy foods, then don’t worry. You can enjoy this dish just the same."
+       
+    }
+]

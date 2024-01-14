@@ -1,0 +1,44 @@
+[
+    {
+        "id":"01",
+        "name":"Alain Ducasse",
+        "img":"https://i.postimg.cc/0jRb3F3R/shutterstock-578166124.jpg",
+        "email":"AlainDucasse@gmail.com",
+        "description":"Alain Ducasse is a French chef with 21 Michelin stars. He owns over 30 restaurants and founded the Ecole Ducasse culinary school. One of his signature dishes is the , a seafood salad first course based on a 16th-century recipe."
+    },
+    {
+        "id":"02",
+        "name":"Gordon Ramsay",
+        "img":"https://i.postimg.cc/DyTFRN37/hire-a-chef-for-your-restaurant-thumbnail.jpg",
+        "email":"GordonRamsay@gmail.com",
+        "description":"Gordon Ramsay is a British celebrity chef, best known for his high-adrenaline cooking shows. He also owns a chain of restaurants, which have been awarded 17 Michelin stars throughout the years. One of his most famous signature dishes is his beef Wellington."
+    },
+    {
+        "id":"03",
+        "name":" Heston Blumenthal",
+        "img":"https://i.postimg.cc/vHbT5TB7/Become-A-Master-Chef.jpg",
+        "email":" HestonBlumenthal@gmail.com",
+        "description":"Heston Blumenthal is famous for his unusual flavor pairings, such as bacon-and-egg ice cream. He owns the Fat Duck restaurant in the UK, which is widely respected as one of the top places to eat, with three Michelin stars. His cooking focuses on farm-fresh seasonal food."
+    },
+    {
+        "id":"04",
+        "name":"ThomasKeller",
+        "img":"https://i.postimg.cc/j5yq7YYk/Confident-smiling-female-chef-holding-two-plates-cooked-food-in-kitchen.jpg",
+        "email":"ThomasKeller@gmail.com",
+        "description":"Thomas Keller is an American chef who has been awarded titles like best chef in America and California multiple times. His restaurants hold seven Michelin stars. He worked his way from kitchen apprentice to very successful and famous chef over many years. His most famous dish is the stunning seafood dish."
+    },
+    {
+        "id":"05",
+        "name":"Quique Dacosta",
+        "img":"https://i.postimg.cc/c4wjG1Mz/f0177229-800px-wm.jpg",
+        "email":"QuiqueDacosta@gmail.com",
+        "description":"Quique Dacosta is a Spanish chef who focuses on the art of cooking, including food presentation and tasting menus that tell the story of his homeland. He owns over a dozen restaurants, several with Michelin stars. He also got the accolade of Gold Medal for Merit in the Fine Arts 2020 and Best Spanish Restaurateur. He is best known for his take on turrón, an almond nougat. "
+    },
+    {
+        "id":"06",
+        "name":"Yannick Alléno",
+        "img":"https://i.postimg.cc/pTQhtFrT/1000-F-357890671-RACOSXE9vqq46-UYeb0xhce-ZQ4-HDdbk-Ms.jpg",
+        "email":"YannickAlléno@gamil.com",
+        "description":"Yannick Alléno is a French chef who has been awarded 12 Michelin stars during his career. He owns restaurants throughout the world where he gathers global influences for his cooking and has released a wide range of cookery books."
+    }
+]
