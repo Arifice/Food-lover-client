@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
 
 
+
+
+
 const MyOrdersCard = ({myorder,handleDelete,handleConfirm}) => {
+   
+    
+   
     const {customerName,foodName,img,email,price,qunatity,date,description,_id,status}=myorder;
     
     

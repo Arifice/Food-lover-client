@@ -22,7 +22,7 @@ const OrderForm = () => {
         const orderinfo={customerName,foodName,img,email,price,qunatity,date,description};
         console.log('order',orderinfo);
 
-        fetch('http://localhost:5000/order',{
+        fetch('https://b8a11-server-side-arifice.vercel.app/order',{
                 method:'POST',
                 headers:{
                     'content-type':'application/json'

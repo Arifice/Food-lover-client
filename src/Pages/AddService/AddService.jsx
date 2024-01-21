@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 
 const AddService = () => {
-    const {user}=useContext(AuthContext);
+    const {user}=useAuth();
     const navigate=useNavigate();
 
     const handleAddService=(e)=>{
@@ -18,27 +17,29 @@ const AddService = () => {
         const date=form.date.value;
         const description=form.description.value;
         const img=form.img.value;
-        const address=form.address.value;
-        const newService={customerName,email,title,img,price,date,description,address};
+        const quantity=form.quantity.value;
+        const newService={customerName,email,title,img,price,date,description,quantity};
         console.log('add service',newService);
 
-        fetch('http://localhost:5000/services',{
+        fetch('https://b8a11-server-side-arifice.vercel.app/services',{
                 method:'POST',
                 headers:{
                     'content-type':'application/json'
                 },
                 body:JSON.stringify(newService)
             })
-            .then(res=>res.json)
+            .then(res=>res.json())
             .then(data=>{
                 console.log(data);
                 Swal.fire({
                     title: "Success",
                     text: "successfully added your service",
-                    icon: "success"
+                    icon: "success",
+                    timer:700
                 });
                 navigate('/allservices');
             })
+        
     }
 
     return (
@@ -53,7 +54,7 @@ const AddService = () => {
                             <label className="label">
                                 <span className="label-text text-xl lg:text-2xl">Customer Name </span>
                             </label>
-                            <input type="text" name="customerName" defaultValue={user?.displayName} placeholder="customerName" className="input text-xl lg:text-2xl input-bordered" required />
+                            <input type="text" disabled name="customerName" defaultValue={user?.displayName} placeholder="customerName" className="input text-xl lg:text-2xl input-bordered" required />
                         </div>
                         <div>
                             <label className="label">
@@ -65,13 +66,13 @@ const AddService = () => {
                             <label className="label">
                                 <span className="label-text text-xl lg:text-2xl">Food Name</span>
                             </label>
-                            <input type="text" name="title" placeholder="password" className="input text-xl lg:text-2xl input-bordered" required />                        
+                            <input type="text" name="title" placeholder="Food Name" className="input text-xl lg:text-2xl input-bordered" required />                        
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-xl lg:text-2xl">Food Image URL</span>
                             </label>
-                            <input type="text" name="img" placeholder="URL" className="input text-xl lg:text-2xl input-bordered"  />                        
+                            <input type="text" name="img" placeholder="Food image URL" className="input text-xl lg:text-2xl input-bordered"  />                        
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -87,16 +88,17 @@ const AddService = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
+                                <span className="label-text text-xl lg:text-2xl">Quantity</span>
+                            </label>
+                            <textarea type="text" name="quantity" defaultValue={'1'} placeholder="quantity" className="input text-xl lg:text-2xl input-bordered"  />                        
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
                                 <span className="label-text text-xl lg:text-2xl">Description</span>
                             </label>
                             <textarea type="text" name="description" placeholder="description" className="input text-xl lg:text-2xl input-bordered"  />                        
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text text-xl lg:text-2xl">Address</span>
-                            </label>
-                            <textarea type="text" name="address" placeholder="Address" className="input text-xl lg:text-2xl input-bordered"  />                        
-                        </div>
+                        
                    </div>
                     <div className="form-control mt-6">
                     <input  type="submit" value={'Add Service'} className="btn text-xl lg:text-2xl btn-secondary" />

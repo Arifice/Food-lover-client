@@ -13,6 +13,7 @@ import PrivateRouter from "./PrivateRouter";
 import ShowDtails from "../Components/ShoDetails/ShowDtails";
 import AddService from "../Pages/AddService/AddService";
 import MyServices from "../Pages/MyServices/MyServices";
+import UpdateService from "../Pages/UpdateService";
 
 const router = createBrowserRouter([
     {
@@ -31,12 +32,12 @@ const router = createBrowserRouter([
         {
           path:'/orderform/:id',
           element:<PrivateRouter><OrderForm></OrderForm></PrivateRouter>,
-          loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+          loader:({params})=>fetch(`https://b8a11-server-side-arifice.vercel.app/services/${params.id}`)
         },
         {
           path:'/showdetails/:id',
           element:<ShowDtails></ShowDtails>,
-          loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+          loader:({params})=>fetch(`https://b8a11-server-side-arifice.vercel.app/services/${params.id}`)
         },
         {
           path:'/login',
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
         {
           path:'/allservices',
           element:<PrivateRouter><AllServices></AllServices></PrivateRouter>,
-          loader:()=>fetch('http://localhost:5000/services')
+          // loader:()=>fetch('https://b8a11-server-side-arifice.vercel.app/services')
         },
         {
           path:'/addservice',
@@ -62,6 +63,11 @@ const router = createBrowserRouter([
         {
           path:'/myservices',
           element:<PrivateRouter><MyServices></MyServices></PrivateRouter>
+        },
+        {
+          path:'/updateservice/:id',
+          element:<PrivateRouter><UpdateService></UpdateService></PrivateRouter>,
+          loader:({params})=>fetch(`https://b8a11-server-side-arifice.vercel.app/services/${params.id}`),
         }
       ]
     },

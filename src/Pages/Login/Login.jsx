@@ -1,23 +1,24 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginpic from '../../assets/images/login/login.png'
-import { useContext } from 'react';
-import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FaFacebook, FaGithub, FaGooglePlus } from "react-icons/fa";
-import axios from 'axios';
+import useAuth from '../../Hooks/useAuth';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const Login = () => {
-    const {login,signWithGoogle,signWithGithub,signWithFacebook}=useContext(AuthContext);
+    const {login,signWithGoogle,signWithGithub,signWithFacebook}=useAuth();
+    const axiosSecure=useAxiosSecure();    
     const navigate=useNavigate();
     const location=useLocation();
+   
 
     const handleLogin=e=>{
         e.preventDefault();
         const form=e.target;        
         const email=form.email.value;
         const password=form.password.value;
-        const user={email,password};
-        console.log('signup user',user);
+        const logedInUser={email,password};
+        console.log('signup user',logedInUser);
 
         login(email,password)
             .then(result=>{
@@ -32,15 +33,14 @@ const Login = () => {
                 //    access token
                 
                 const user={email};
-                axios.post(`http://localhost:5000/jwt`,user,{
-                   withCredentials:true
-                })
-                    .then(result=>{
-                        console.log('jwt',result.data);
-                        if(result.data.success){
-                            navigate(location?.state? location?.state:'/'); 
+                 axiosSecure.post(`/jwt`,user) 
+                    .then(res=>{
+                        if(res.data.success){
+                            navigate(location?.state? location?.state:'/');
                         }
-                    })  
+                    })
+
+               
             })
             .catch(error=>{
                 console.log(error);
@@ -55,13 +55,23 @@ const Login = () => {
     const handleGoogle=()=>{
         signWithGoogle()
             .then(result=>{
-                console.log(result);
+                console.log('google response',result);
+                console.log(result.user.email);
                 Swal.fire({
                     title: "Good job!",
                     text: "You have successfully login",
                     icon: "success"
                   });
-                //  navigate(location?.state? location?.state:'/');  
+
+                const email=result.user.email;
+                const user={email}
+                 
+                axiosSecure.post(`/jwt`,user)
+                    .then(res=>{
+                        if(res.data.success){
+                            navigate(location?.state? location?.state:'/');  
+                        }
+                    })               
             })
             .catch(error=>{
                 console.log(error);
@@ -81,7 +91,8 @@ const Login = () => {
                     text: "You have successfully login",
                     icon: "success"
                   });
-                 navigate(location?.state? location?.state:'/');  
+                  navigate(location?.state? location?.state:'/');  
+                  
             })
             .catch(error=>{
                 console.log(error);

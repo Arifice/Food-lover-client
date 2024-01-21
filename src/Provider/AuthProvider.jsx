@@ -2,11 +2,14 @@
 import { createContext, useEffect, useState } from "react";
 import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+// import axios from "axios";
 
 export const AuthContext=createContext();
 const auth=getAuth(app);
 
 const AuthProvider = ({children}) => {
+    const axiosSecure=useAxiosSecure();
     const [loading,setLoading]=useState(true);
     const [user,setUser]=useState();
 
@@ -20,7 +23,7 @@ const AuthProvider = ({children}) => {
     }
     const logOut=()=>{
         setLoading(true);
-        signOut(auth)
+        signOut(auth);
     }
     const googleProvider=new GoogleAuthProvider();
     const signWithGoogle=()=>{
@@ -37,6 +40,33 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signInWithPopup(auth,facebookProvider);
     }
+    
+    useEffect(()=>{
+        const unsubscribe=onAuthStateChanged(auth,currentUser=>{
+            // const userEmail=currentUser? currentUser.email : user?.email;
+            // const loggedInUser={email:userEmail};
+            setUser(currentUser);            
+            setLoading(false);
+            console.log({currentUser,loading});
+            // if(currentUser){                
+            //     axiosSecure.post('/jwt',loggedInUser)
+            //         .then(res=>{
+            //             console.log(res.data);
+            //         })
+            // }
+            // else{
+            //     // axios.post('https://b8a11-server-side-arifice.vercel.app/logout',loggedInUser)
+            //     //     .then(res=>{
+            //     //         console.log(res.data);
+            //     //     })
+            // }
+           
+        })
+        return ()=>{
+            unsubscribe();
+        }
+    },[axiosSecure,loading])
+
     const authInfo={
         loading,
         createUser,
@@ -47,16 +77,7 @@ const AuthProvider = ({children}) => {
         signWithGithub,
         signWithFacebook
     }
-    useEffect(()=>{
-        const unsubscribe=onAuthStateChanged(auth,currentUser=>{
-            setUser(currentUser);
-            console.log('current user in the on authstate change',currentUser)
-            setLoading(false);
-        })
-        return ()=>{
-            unsubscribe();
-        }
-    },[])
+
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

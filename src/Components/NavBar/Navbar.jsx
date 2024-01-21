@@ -1,12 +1,13 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from '../../assets/images/logo/logo.png'
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
+import { useEffect, useState } from "react";
 // import Swal from "sweetalert2";
 
 const Navbar = () => {
+    const {user,logOut}=useAuth();
     const [theme,setTheme]=useState(localStorage.getItem("theme")?localStorage.getItem("theme"):"light");
-    const {user,logOut}=useContext(AuthContext);
+   
     const navigate=useNavigate();
 
     const handleTheme=(e)=>{

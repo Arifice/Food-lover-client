@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import TeamCard from "./TeamCard";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Team = () => {
-    const [teams, setTeams]=useState([]);
+    const axiosSecure=useAxiosSecure();
+    const [teams, setTeams]=useState([]);    
     useEffect(()=>{
-        fetch('http://localhost:5000/team')
-            .then(res=>res.json())
-            .then(data=>{
-                setTeams(data);
-            })
-    },[])
+            axiosSecure.get(`/team`)
+                .then(res=>{
+                    setTeams(res.data);
+                })
+
+    },[axiosSecure])
     return (
         <div>
             <h1 className="text-5xl text-center text-purple-600 font-bold my-24">Our Team Members </h1>

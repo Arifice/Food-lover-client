@@ -1,16 +1,31 @@
-import { useLoaderData } from "react-router-dom";
+
+
+import useServices from "../../Hooks/useServices";
 import ServiceCard from "../Services/ServiceCard";
+import {  useState } from "react";
 
 
 
 const AllServices = () => {
-    const services=useLoaderData();
+    // const axiosSecure=useAxiosSecure();
+    const [asc,setAsc]=useState(true);
+    const [search,setSearch]=useState('');
+    console.log({asc});
+    const services =useServices(asc,search);
+    
+    
+   
+    console.log(asc);
+    console.log(services);
 
+    const handleSearch=(e)=>{
+        e.preventDefault();
+        const searchText=e.target.search.value;
+        console.log(searchText);
+        setSearch(searchText);
 
-    // const [serchServices,setSerchservices]=useState(services);
-    // useEffect(()=>{
-    //     fetch(``)
-    // },[])
+    }
+
     
 
     return (
@@ -28,6 +43,17 @@ const AllServices = () => {
                 </div>
             </div>
             <h1 className="text-5xl font-bold text-secondary mt-10 text-center">Enjoy Our Services</h1>
+
+            <div className="flex justify-center my-10">
+
+                <button onClick={()=>setAsc(!asc)} className="btn text-3xl  btn-warning">{asc?'Price : High to low':'Price : Low to high'}</button>
+            </div>
+            <div className="flex justify-center">
+                <form onSubmit={handleSearch} >
+                    <input type="text" name="search" className="text-2xl p-2  border-2 border-warning " placeholder="search" />
+                    <input type="submit" className="text-2xl btn btn-secondary" value={'search'} />
+                </form>
+            </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 {
                     services.map(service=><ServiceCard key={service._id} servic={service}></ServiceCard>)

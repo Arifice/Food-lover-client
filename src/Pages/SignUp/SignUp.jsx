@@ -1,12 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../assets/images/login/login.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { sendEmailVerification, updateProfile } from 'firebase/auth';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const SignUp = () => {
     const {createUser}=useContext(AuthContext);
+    const axiosSecure=useAxiosSecure();
+    const navigate=useNavigate();
+    const location=useLocation();
     const handleSignUp=e=>{
         e.preventDefault();
         const form=e.target;
@@ -14,8 +18,8 @@ const SignUp = () => {
         const photo=form.photo.value;
         const email=form.email.value;
         const password=form.password.value;
-        const user={name,photo,email,password};
-        console.log('signup user',user);
+        const userInfo={name,photo,email,password};
+        console.log('signup user',userInfo);
 
         createUser(email,password)
             .then(result=>{
@@ -24,8 +28,7 @@ const SignUp = () => {
                     title: "Good job!",
                     text: "You have successflly sign",
                     icon: "success"
-                  });
-                  
+                  });                  
                   sendEmailVerification(result.user)
                         .then(result=>{
                             console.log(result.user);
@@ -54,7 +57,16 @@ const SignUp = () => {
                     })
                     .then(error=>{
                         console.log(error)
-                    })              
+                    }) 
+
+                const user={email};
+                axiosSecure.post(`/jwt`,user) 
+                    .then(res=>{
+                        if(res.data.success){
+                            navigate(location?.state? location?.state:'/');
+                        }
+                    })   
+                 
             })
             .catch(error=>{
                 console.log(error);

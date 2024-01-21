@@ -2,25 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MyOrdersCard from "./MyOrdersCard";
 import Swal from "sweetalert2";
-import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const MyOrders = () => {
-    const {user}=useContext(AuthContext)
-    const url=`http://localhost:5000/order?email=${user?.email}`;
+    const {user}=useContext(AuthContext);
+    const axiosSecure=useAxiosSecure();
+    const url=`/order?email=${user?.email}`;
+    console.log('myorder',url);
     const [myorders,setMyOrders]=useState([]);
     useEffect(()=>{
-        axios.get(url,{withCredentials:true})
+        axiosSecure.get(url)
             .then(res=>{
                 setMyOrders(res.data);
-            })
-        // fetch(url)
-        //     .then(res=>res.json())
-        //     .then(data=>{
-        //         console.log(data);
-        //         setMyOrders(data);
-        //     })
-    },[url])
+            })       
+    },[url,axiosSecure])
 
 const handleDelete=(id)=>{
     Swal.fire({
@@ -34,13 +30,10 @@ const handleDelete=(id)=>{
       }).then((result) =>{
         if (result.isConfirmed) {
 
-            fetch(`http://localhost:5000/order/${id}`,{
-                method:'DELETE'
-            })
-                .then(res=>res.json())
-                .then(data=>{
-                    console.log(data)
-                    if(data.deletedCount>0){
+            axiosSecure.delete(`/order/${id}`)
+                .then(res=>{
+                    console.log(res.data);
+                    if(res.data.deletedCount>0){
                         const remaining=myorders.filter(booking=>booking._id!==id);
                         setMyOrders(remaining);
                         Swal.fire({
@@ -50,13 +43,13 @@ const handleDelete=(id)=>{
                         });
                     }
                 })
-          
+ 
         }
       } )
 }
 
 const handleConfirm=(id)=>{
-        fetch(`http://localhost:5000/order/${id}`,{
+        fetch(`https://b8a11-server-side-arifice.vercel.app/order/${id}`,{
             method:'PATCH',
             headers:{
                 'content-type':'application/json',
@@ -81,6 +74,33 @@ const handleConfirm=(id)=>{
             });
         }
         })
+        
+        // fetch(`https://b8a11-server-side-arifice.vercel.app/myServices/${id}`,{
+        //     method:'PATCH',
+        //     headers:{
+        //         'content-type':'application/json',
+        //     },
+        //     body:JSON.stringify({status: 'confirm',orderedby:`${name}`})
+
+        // })
+        // .then(res=>res.json())
+        // .then(data=>{
+        //     console.log(data)
+        //     if(data.modifiedCount>0){
+        //     const remaining=myorders.filter(booking=>booking._id!==id);
+        //     const updated=myorders.find(booking=>booking._id===id);
+        //     updated.status='confirm';
+        //     const newMyorders=[updated, ...remaining];
+        //     setMyOrders(newMyorders);
+
+        //     Swal.fire({
+        //         title: "Success",
+        //         text: "Confirmation successful",
+        //         icon: "success"
+        //     });
+        // }
+        // })
+
 }
 
     return (

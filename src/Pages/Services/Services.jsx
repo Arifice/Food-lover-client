@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 
 
+
 const Services = () => {
-    const navigate=useNavigate();
+    const navigate=useNavigate();    
     const [services,setServices]=useState([]);
+    
     useEffect(()=>{
-        fetch('http://localhost:5000/services')
+        fetch('https://b8a11-server-side-arifice.vercel.app/home/services')
             .then(res=>res.json())
             .then(result=>{
                 setServices(result);
@@ -21,6 +23,7 @@ const Services = () => {
     }
     return (
         <div>
+            
             <h1 className="text-5xl text-center mt-32 font-bold text-orange-600">Our Services </h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 {
